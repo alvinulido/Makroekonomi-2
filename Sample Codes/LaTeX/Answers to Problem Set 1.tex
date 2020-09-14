@@ -1,0 +1,414 @@
+\documentclass[letter,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2. Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry} 
+
+% The following two packages - multirow and booktabs - are needed to create nice looking tables.
+\usepackage{IEEEtrantools}
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+
+% Package to place figures where you want them.
+\usepackage{float}
+
+% The fancyhdr package let's us create nice headers.
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\let\otheriint\iint
+\let\iint\relax
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy} 
+\fancyhf{}
+\lhead{\footnotesize ECON 330: Homework 1}
+\rhead{\footnotesize{\textit{Lumbanraja, Alvin Ulido}}} %<---- Fill in your lastnames.
+\cfoot{\footnotesize \thepage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4. Your document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty} % This command disables the header on the first page. 
+\begin{tabular}{p{17cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf Homework 1} \\
+ECON 330 (Theory of Income) \\ Fall 2019  \\ {\bf{Alvin Ulido Lumbanraja}}\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+\vspace*{0.3cm} % Now we want to add some vertical space in between the line and our title.
+% Up until this point you only have to make minor changes for every week (Number of the homework). Your write up essentially starts here.
+
+\begin{enumerate}
+
+% 	Question 1
+	%% 			1(a)
+\item  \begin{enumerate} \item Given the utility function of
+\begin{IEEEeqnarray}{rCl}
+    U\{C(t)\}=\int_{0}^{T} e^{-\rho t} \frac{c^{1-\sigma}-1}{1-\sigma} dt, \quad \sigma>0 
+\end{IEEEeqnarray}
+
+Subject to:
+\begin{IEEEeqnarray}{rCl}
+    \dot{A} &=& rA(t)-c(t), \quad \forall t \IEEEyessubnumber
+    \\ A(T) &\geq 0 \IEEEyessubnumber
+    \\ r &\geq 0 \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+We can construct the following Hamiltonian function to obtain the optimal consumption plan for this individual: 
+\begin{IEEEeqnarray}{rCl}
+\mathcal{H}(t,A,c,\lambda) &=& f(t,A,c)+\lambda(t)g(t,A,c) \IEEEnonumber
+\\ &=& e^{-\rho t} \frac{c^{1-\sigma}-1}{1-\sigma} + \lambda(t)(rA-c)
+\\ \frac{\partial \mathcal{H}}{\partial c} &=& e^{-\rho t}c^{-\sigma} - \lambda = 0 \IEEEyessubnumber
+\\ \frac{\partial \mathcal{H}}{\partial \lambda} &=& rA-c = \dot{A} \IEEEyessubnumber
+\\ \frac{\mathcal{H}}{\partial A} &=& \lambda r = -\dot{\lambda} \IEEEyessubnumber
+\\ A(0) &=& A_0 \quad\text{(Fixed value)} \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+Rearranging equation (2a) and differentiating it w.r.t. time, we get
+\begin{IEEEeqnarray}{rCl}
+c^{-\sigma} &=& \lambda e^{\rho t} \IEEEnonumber
+\\ -\sigma c^{-\sigma-1}\dot{c} &=& \rho e^{\rho t}\lambda + e^{\rho t}\dot{\lambda} \IEEEnonumber
+\\ \frac{\dot{\lambda}}{\lambda}&=&-(\rho+\sigma\frac{\dot{c}}{c})
+\end{IEEEeqnarray}
+
+Plugging the equation (3) to equation (2c), we get
+\begin{IEEEeqnarray}{rCl}
+\frac{\dot{c}}{c}&=&\frac{1}{\sigma}(r-\rho) \IEEEyessubnumber
+\\ \frac{d \ln c}{dt} &=& \frac{1}{\sigma}(r-\rho) \IEEEnonumber
+\\ \ln c &=& \int \frac{1}{\sigma}(r-\rho) dt = \frac{1}{\sigma}(r-\rho)t + \ln c_0 \IEEEnonumber
+\\ c(t)&=& c_0 e^{\frac{1}{\sigma}(r-\rho)t}
+\end{IEEEeqnarray}
+The optimal plan in (4) depends on the value of $(r-\rho)$ and can be characterized as follows:
+
+
+\newpage
+Let us now turn the problem into the law of motion of individual assets. To check on individual's asset holding, consider equation (2b) evaluated at time t with respect to $A_0$
+\begin{IEEEeqnarray}{rCl}
+\dot{A} &=& rA-c \IEEEnonumber
+\end{IEEEeqnarray}
+\begin{IEEEeqnarray}{rCl}
+-e^{-rt}c(t) &=& e^{-rt}\dot{A} - re^{-rt}A(t)
+\\ -e^{-rt}c(t) &=& \frac{d}{dt}(e^{-rt}A(t)) \IEEEnonumber
+\\ \int_{0}^{t} \frac{d}{dt}(e^{-rt}A(t)) &=& \int_{0}^{t} -e^{-rt}c_0e^{\frac{1}{\sigma}(r-\rho)t}\text{ }dt \IEEEnonumber
+\\ e^{-rt}A(t)-A_0 &=& \frac{\sigma}{\rho+r\sigma-r} c_0(e^{\frac{1}{\sigma}(r-\rho)t} - 1)\IEEEnonumber 
+\\ A(t)&=& e^{rt}A_0 + \frac{\sigma}{\rho+r\sigma-r} c_0(e^{\frac{1}{\sigma}(r-\rho)t} - 1)e^{rt} \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+As we know that consumption (control) depends solely on the value of the assets/endowment (state variables) and no salvage function at terminal period is given, the terminal condition as given by (1b) should be binding (that is the $A(T)=0$, otherwise the individual can consume more until the assets are depleted). Knowing this, the equation (5a) can be reduced to 
+
+\begin{IEEEeqnarray}{rCl}
+A(T)&=& e^{rT}A_0 + \frac{\sigma}{\rho+r\sigma-r} c_0(e^{\frac{1}{\sigma}(r-\rho)T} - 1)e^{rT} \IEEEnonumber 
+\\ \frac{\sigma}{\rho+r\sigma-r} c_0(1-e^{\frac{1}{\sigma}(r-\rho)T}) &=& A_0 \IEEEnonumber 
+\\ c_0 &=& {\frac{\rho+r\sigma-r}{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T})}}A_0
+\\ c_t &=& {\frac{\rho+r\sigma-r}{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T})}}A_0e^{\frac{1}{\sigma}(r-\rho)T}
+\end{IEEEeqnarray}
+\vspace*{0.3cm}
+
+	%% 			1(b)
+\item To check whether there exist a time $\tilde{t}$ where $\tilde{t}<T$ and {$A(\tilde{t})=0$}, let us assume that $\tilde{t}$ that fits such condition exists. Given the binding lifetime budget constraint, we can rewrite the law of motion as follows:
+\begin{IEEEeqnarray}{rCl} 
+\dot{A}(t) &=& rA(t)-c(t) \IEEEnonumber
+\\ &=& -c(t) \IEEEnonumber
+\\ c(t)&=& 0, \quad\quad\quad \forall t, \tilde{t}<t\leq T
+\end{IEEEeqnarray}
+
+Simultaneously, we should consider the utility function as described in (1). If the function satisfies the Inada condition, then solution that contains $c(t)=0$ must by definition be suboptimal. Otherwise, such solution may exists
+\begin{IEEEeqnarray}{rCl}
+U'(c(t)) &=& e^{-\rho t}c^{-\rho} \IEEEnonumber
+\\ \lim_{c(t)\rightarrow 0} &=& +\infty
+\\ \lim_{c(t)\rightarrow \infty} &=& 0
+\end{IEEEeqnarray}
+
+As the utility function in (1) satisfies the Inada condition, the condition where $c(t)=0$ is sub-optimal and will not be taken by the individual (assuming, of course, that she is utility-maximizing). However, if we are to relax the constraints of A(T), for example by allowing the individual to bequeath debts (setting the value of $A(T)=\beta, \beta<0$, the equation (8) can be rearranged to
+\begin{IEEEeqnarray}{rCl}
+A(T)-A(\tilde{t})&=&\beta 
+\\A(T)&<&A(\tilde{t}) \IEEEnonumber
+\end{IEEEeqnarray}
+We can allow individual to deplete their savings before the terminal point. It is of course also possible that said individual exhaust her original savings if for some reason she experiences positive wealth shock (e.g. winning significant amount of lottery, receives large sums of inheritance) at time $t\leq\tilde{t}<T$. Another possible (but highly implausible) scenario where she exhaust her savings before time $T$ is to experience change in preference/utility function at time $t\leq\tilde{t}<T$ in such a way that Inada condition no longer holds (e.g. the biblical case of Zaccheus)
+\vspace*{0.3cm}
+
+	%% 			1(c)
+\item The rate of consumption growth, $\dot{c}$, can be evaluated by looking at the equation (3a)
+\begin{IEEEeqnarray}{rCl}
+\frac{\dot{c}}{c}&=&\frac{1}{\sigma}(r-\rho)
+\end{IEEEeqnarray}
+
+Rate of consumption growth depends primarily on the value of $r-\rho$, or the difference between the interest rate on assets and discount rate (which reflects impatience of said individual). Her optimal consumption path (the value of $\tfrac{\dot{c}}{c}$) will be increasing as a function of time if interest rate on assets exceed her discount rate. However, if she is impatient enough so that $r-\rho<0$, her consumption will be decreasing as a function of time. Consumption will remain constant over time if $r=\rho$.
+While not affecting the sign of the consumption growth, rate of relative risk aversion $\rho$ may affect the magnitude of the optimal path of consumption growth. Higher value of $\rho$ is associated with lower magnitude of consumption growth. In the case of $r-\rho>0$ ($r-\rho<0$), higher $\rho$ will reduce the magnitude of increase (decrease) in consumption as a function of time
+\vspace*{0.3cm}
+
+	%% 			1(d)
+			%%			1(d)i
+\item The effect of changes in parameter to optimal consumption plan is outlined as follows:
+\begin{enumerate}
+\item \underline{Changes in $A_0$, where $\hat{A}_0=\mu{A_0},\text{ } \mu>1$}
+\begin{IEEEeqnarray}{rCl}
+\hat{c}_t &=&{\frac{\rho+r\sigma-r}{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)t^*})}}\hat{A}_0e^{\frac{1}{\sigma}(r-\rho)t} \IEEEnonumber
+\\ &=&{\frac{\rho+r\sigma-r}{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)t^*})}}\beta A_0e^{\frac{1}{\sigma}(r-\rho)t} \IEEEnonumber
+\\ &=&\beta c(t) 
+\\ \hat{c}_t &>& c(t) \IEEEnonumber
+\end{IEEEeqnarray}
+The change in starting amount of is therefore linearly related to change in change in optimal consumption path
+\vspace*{0.3cm}
+			%%			1(d)ii
+\item \underline{Changes in $\rho$, where $\hat{\rho}>\rho$}
+\newline
+Consider the equation (4). By deriving it w.r.t. $\rho$
+
+\begin{IEEEeqnarray}{rCl}
+\frac{\dot{c}}{c(t)} &=&\frac{1}{\sigma}(r-\rho)
+\\ \frac{\partial \dot{c}/c(t)}{\partial \rho} &=& -\frac{1}{\sigma} \IEEEnonumber
+\end{IEEEeqnarray}
+
+We see that increases in discount rate reduce the optimal growth rate of consumption, further reducing consumption at later date relative to consumption. At the same time, we can check the effect of increases in discount rate to $c_0$ by deriving equation (7) w.r.t. $\rho$
+\begin{IEEEeqnarray}{rCl}
+c_0 &=& {\frac{\rho+r\sigma-r}{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T})}}A_0  \IEEEnonumber
+\\\frac{\partial c_0}{\partial \rho} &=& \frac{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T})A_0 -(\rho+r\sigma-r)\rho e^{\frac{1}{\sigma}(r-\rho)T}A_0}{(\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T}))^2}
+\end{IEEEeqnarray}
+If we (reasonably) assume that the term $(\rho+r\sigma-r)\rho\ll1$, we can realize that the sign of the equation (15) hinges on the value of $(r-\rho)$. If $(r-\rho)<0$, we know that the term $(1-(r-\rho))>0$ and the sign is thus positive. This interpretation means that she would have higher initial consumption (as the discount rate is higher and she would value future consumption, even with the possibility of earning interest rate on deferred consumption, less than today's consumption). On the other hand, if $(r-\rho)>0$, we thus have $(1-(r-\rho))<0$, meaning that she will have lower initial consumption and positive/higher consumption growth rate
+\vspace*{0.3cm}
+
+			%%			1(d)iii
+\item \underline{Changes in planning horizon $\hat{T}$, where $\hat{\rho}>\rho$}
+\newline We can check the impact of longer planning horizon by deriving c(t) from (7a) and assuming $\sigma=1$ to make the equation more tractable. We have shown before that $t^*=T$
+\begin{IEEEeqnarray}{rCl}
+c_0 &=&{\frac{\rho+r\sigma-r}{\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T})}}A_0  \IEEEnonumber
+\\\frac{\partial d}{\partial T} &=& \frac{-e^{\frac{1}{\sigma}(r-\rho)T}A_0}{(\sigma(1-e^{\frac{1}{\sigma}(r-\rho)T}))^2}
+\end{IEEEeqnarray}
+Longer planning horizon would definitely reduce the level of initial consumption
+\end{enumerate}
+
+\vspace*{0.3cm}
+
+	%% 			1(e)
+\item The present value of the bequest can be stated as: 
+\begin{IEEEeqnarray}{rCl}
+v(A)&=& e^{-rt}\frac{A^{1-\theta}}{1-\theta}, \theta>0
+\end{IEEEeqnarray}
+The crucial difference between above model (no assets bequeathed at $t=T$), is that the boundary condition of (2e) is restated into the following:
+\begin{IEEEeqnarray}{rCl}
+\lambda(T)=v'(A)&=& e^{-rt}\frac{A^{1-\theta}}{1-\theta} \IEEEnonumber
+\\ e^{-\rho T}c^{-\sigma} &=& (1-\theta)e^{-rT}\frac{A^{-\theta}}{1-\theta}
+\\ c(T)^{-\sigma}&=&e^{(\rho-r)T} A(T)^{-\theta} \IEEEnonumber
+\\ c(T)&=&[e^{(\rho-r)T} A(T)^{-\theta}]^{-\frac{1}{
+\sigma}} \IEEEnonumber
+\\ &=& e^{\frac{1}{\sigma}(r-\rho)}A(T)^{\frac{\theta}{\sigma}} \IEEEnonumber
+\\ c_0e^{\frac{1}{\sigma}(r-\rho)T} &=&   e^{\frac{1}{\sigma}(r-\rho)T}A(T)^{\frac{\theta}{\sigma}} \IEEEnonumber
+\\ c_0 &=& A(T)^{\frac{\theta}{\sigma}} \IEEEyessubnumber
+\\ c(t) &=& A(T)^{\frac{\theta}{\sigma}}e^{\frac{1}{\sigma}(r-\rho)t} \IEEEyessubnumber
+\end{IEEEeqnarray}
+We then can solve A(T) as a function of  
+\begin{IEEEeqnarray}{rCl}
+A(T)&=& e^{rT}A_0 + \frac{\sigma}{\rho+r\sigma-r} A(T)^{\frac{\theta}{\sigma}}e^{\frac{1}{\sigma}(r-\rho)T}  \IEEEnonumber
+\\ A(T)-\frac{\sigma}{\rho+r\sigma-r} A(T)^{\frac{\theta}{\sigma}}e^{\frac{1}{\sigma}(r-\rho)T} &=& e^{rT}A_0 \IEEEnonumber
+\\ A(T) &=& \frac{e^{rT}A_0}{1-\frac{\sigma}{\rho+r\sigma-r}A(T)^{\frac{\theta-\sigma}{\sigma}}e^{\frac{1}{\sigma}(r-\rho)T}}
+\\ c_0 &=& \Big[\frac{e^{rT}A_0}{1-\frac{\sigma}{\rho+r\sigma-r}c_0^{\frac{\theta-\sigma}{\theta}}e^{\frac{1}{\sigma}(r-\rho)T}}\Big]^{\frac{\rho}{\sigma}}
+\end{IEEEeqnarray}
+$A(T)$ and $c_0$ in Equation (19) and (2) can be solved computationally for any value of $\theta$ and $\sigma$.
+\vspace*{0.3cm}
+
+	%% 			1(f)
+\item Increases in $A_0$ to $\mu A_0$ will affect $A(T)$ and c(t) as follows: 
+\begin{IEEEeqnarray}{rCl}
+\hat{A}(T) &=& \frac{e^{rT}\mu A_0}{1-\frac{\sigma}{\rho+r\sigma-r}\hat{A}(T)^{\frac{\theta-\sigma}{\sigma}}e^{\frac{1}{\sigma}(r-\rho)T}} \IEEEyessubnumber
+\\ \hat{c}(t) &=& \Big[\frac{e^{rT}\mu A_0}{1-\frac{\sigma}{\rho+r\sigma-r}\hat{c}^{\frac{\theta-\sigma}{\theta}}e^{\frac{1}{\sigma}(r-\rho)T}}\Big]^{\frac{\rho}{\sigma}}e^{\frac{1}{\sigma}(r-\rho)t} \IEEEyessubnumber
+\end{IEEEeqnarray}
+We thus can realize that the increase in $c_0$ and $A(T)$ and $c(t)$ is non-linear, given that the term $A(T)$ and $c(t)$ still exists in both left- and righ-hand side of the equation. However, both $A(T)$ and $c(t)$ can scale up linearly if we allow for $\theta=\sigma$. In that case, equation (20a) and (20b) can be reduced to the following expression
+\begin{IEEEeqnarray}{rCl}
+\hat{A}(T) &=& \frac{e^{rT}\mu A_0}{1-\frac{\sigma}{\rho+r\sigma-r}e^{\frac{1}{\sigma}(r-\rho)T}} = \mu A(T) \IEEEyessubnumber
+\\ \hat{c}(t) &=& \frac{e^{rT}\mu A_0}{1-\frac{\sigma}{\rho+r\sigma-r}e^{\frac{1}{\sigma}(r-\rho)T}}e^{\frac{1}{\sigma}(r-\rho)t} = \mu c(t) \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+\end{enumerate}
+\vspace*{0.3cm}
+
+% 	Question 2
+v\item  Household problem can be restated into
+\begin{IEEEeqnarray}{rCl}
+\max_{\{c,e_1,e_2\}} \int_{0}^{T} e^{-\rho t}[u((e_1(t)+e_2(t))+\alpha c(t)] dt
+\end{IEEEeqnarray}
+
+Subject to:
+\begin{IEEEeqnarray}{rCl}
+\dot{R}&=&-e_1(t) \IEEEnonumber
+\\ e_1,e_2 &\geq& 0 \IEEEnonumber
+\\ R(T) &\geq& 0 \IEEEnonumber
+\end{IEEEeqnarray}
+
+The Hamiltonian function for the problem is:
+\begin{IEEEeqnarray}{rCl}
+\mathcal{H} = e^{-\rho t}[u(e_1+e_2)+\alpha (\Bar{y}-\kappa_1e_1-\kappa_2e_2)] + \mu[-e_1] + \lambda_1[e_1]+\lambda_2[e_2]+\lambda_3[\Bar{y}-\kappa_1e_1-\kappa_2e_2-c]
+\end{IEEEeqnarray}
+
+\begin{enumerate} \item The first-order condition is thus:
+\begin{IEEEeqnarray}{rCl}
+u^*(t)&=&\argmax_{u\in U} \mathcal{H}(t,e_1^*,e_2^*,\bar{y}) \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{de_1}&=&e^{-\rho t}u'_{e_1}(E)-e^{-\rho t}\alpha\kappa_1-\mu + \lambda_1 -\kappa_1\lambda_3 \geq 0 \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{de_2}&=&e^{-\rho t}u'_{e_2}(E)-e^{-\rho t}\alpha\kappa_2 +\lambda_2 -\kappa_2\lambda_3
+\geq 0 \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{dR}&=&0=-\dot{\mu} \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{d\mu} &=& -e_1(t)  = \dot{R} \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+\vspace*{0.3cm}
+	%% 			2(b)
+\item In this case, we assume that the resource is so abundant to the point where $R(T)>0$. We also know that $R(T)(\mu(T)-\psi'(T))=0$. Thus, we can safely infer that $\mu(T)=0$.  Furthermore, as $\dot{\mu}(t)=0$, we know that $e_1$ is constant over time. Then, the (22a) and (22b) can be reduced to 
+\begin{IEEEeqnarray}{rCl}
+\frac{d\mathcal{H}}{de_1}&=&e^{-\rho t}u'_{e_1}(E)-e^{-\rho t}\alpha\kappa_1 + \lambda_1 -\kappa_1\lambda_3 \geq 0 \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{de_2}&=&e^{-\rho t}u'_{e_2}(E)-e^{-\rho t}\alpha\kappa_2 +\lambda_2 -\kappa_2\lambda_3 \geq 0 \IEEEyessubnumber
+\end{IEEEeqnarray}
+If there exists an interior solution, then (22f) and (22g) should be equal to zero and thus (by realizing that $e_1$ and $e_2$ is perfectly substitutible for $U(E)$ and thus have the same marginal utility)
+\begin{IEEEeqnarray}{rCl}
+e^{-\rho t}\alpha(\kappa_2-\kappa_1)=\lambda_3(\kappa_1-\kappa_2)+(\lambda_2-\lambda_1)
+\end{IEEEeqnarray}
+As we have established that $e_1$, the only control that may vary over time, is constant in this case, then $e_2$, which depends only on fixed endowment, should also be fixed over time and we can safely assume that $\lambda_2$ is constant over time. However, this leads to a contradiction since the left-hand side of the equation (specifically  $e^{-\rho t})$ is evolving over time and the rest of the terms in equation (23) is constant. Thus only one of (22f) and (22g) is equal to zero (we face corner solution). Given that $\lambda_1, \lambda_2 \geq 0$ (otherwise relaxing constraint would actually lead to fewer consumption) and that $\kappa_2 > \kappa_1$, we know that (22f) $<$ (22g) an as such only (22f) can be equal to zero. This ensures the exclusive usage of $e_1 \forall t$.
+\vspace*{0.3cm}
+As the resource constraints no longer bind and $\mu=$, we only have to maximize the utility w.r.t to the endowment, the value of which is constant over time. Hence, the Hamiltonian can be reduced to static Lagrangian
+\begin{IEEEeqnarray}{rCl}
+\mathcal{L} &=& [u(e_2)+\alpha (\Bar{y}-\kappa_1e_2)]+\lambda[\Bar{y}-\kappa_2e_2-c]
+\\ \frac{d\mathcal{L}}{de_2}&=&u'(e_2)-\alpha\kappa_2-\lambda\kappa_1=0 \IEEEnonumber
+\\ \frac{d\mathcal{L}}{d\lambda}&=&\Bar{y}-\kappa_1e_1-c=0 \IEEEnonumber
+\\ \IEEEnonumber
+\\ \kappa_1&=&\frac{u'(e_1^*)}{\alpha+\lambda} \IEEEnonumber
+\\c&=&\Bar{y}-\frac{u'(e_1^*)}{\alpha+\lambda}e_1
+\end{IEEEeqnarray}
+\vspace*{5cm}
+
+	%% 			2(c)
+\item In the case where resource endowment is assumed to be zero, energy production depends solely on constant endowment stream. Given that we maximize the energy subject to time-invariant endowment stream, we can reduce the the original Hamiltonian into static Lagrangian as follows:
+\begin{IEEEeqnarray}{rCl}
+\mathcal{L} &=& [u(e_2)+\alpha (\Bar{y}-\kappa_2e_2)]+\lambda[\Bar{y}-\kappa_1e_2]
+\\ \frac{d\mathcal{L}}{de_2}&=&u'(e_2)-\alpha\kappa_2-\lambda\kappa_2=0 \IEEEnonumber
+\\ \frac{d\mathcal{L}}{d\lambda}&=&\Bar{y}-\kappa_2e_2-c=0 \IEEEnonumber
+\\ \IEEEnonumber
+\\ \kappa_2&=&\frac{u'(e_2^*)}{\alpha+\lambda} \IEEEnonumber
+\\c&=&\Bar{y}-\frac{u'(e_2^*)}{\alpha+\lambda}e_2
+\end{IEEEeqnarray}
+
+Notice the similarity between problem (c) and problem (b), in which the consumption of both composite bundle of non-energy goods and $e_2$ is constant over time.
+
+\newpage
+	%% 			2(d)
+\item As $T$ is large and $R_0>0$, we may reasonably assume that $R(T)=0$. In this case, we may want to check whether there exists interior solution where $e_1$ and $e_2$ are used simultaneously. However, with $R(T)=0$, we now have to assume that $\mu(T)\geq0$ and $\mu(T)$ is a constant when it assumes non-zero value. Similar to (b), we want to check whether there exists an interior solution to this problem. However, just as in this case of (b), we have contradiction in which the equation (23) is modified to:
+\begin{IEEEeqnarray}{rCl}
+e^{-\rho t}\alpha(\kappa_2-\kappa_1)=\lambda_3(\kappa_1-\kappa_2)+(\lambda_2-\lambda_1)+\mu
+\end{IEEEeqnarray}
+Where the right-hand side is constant and the left-hand side changes with time. As $\mu\geq0$ and $\kappa_2>\kappa_1$, we know that $\frac{d\mathcal{H}}{de_1}<\frac{d\mathcal{H}}{de_2}$. Hence, as in case (2b), only $e_1$ is used if $R(t)>0$. Intuitively, as $\kappa_2>\kappa_1$ but $e_1$ and $e_2$ are perfect substitution ($u(E)=u(e_1+e_2))$, utility-maximizing economy will strictly choose $e_1$ if and when required resources are still available. 
+\vspace*{0.3cm}
+However, given that $T$ is large, we can also assume that there exists $t^*, t^*<T$, which indicates the time point when the economy fully exhausts the resources. The problem at hand can be reduced similarly to the case of (2b) and (2c), where the economy will fully exhausts $R(t)$ first and then use $e_2$ afterwards. As $e_1$ and $e_2$ cannot be used at the same time, both can be reduced to Lagrangian solution as in (2b) and (2c), where
+\begin{IEEEeqnarray}{rCl}
+t^* &=& \frac{R_0}{e_1}
+\\ \kappa_1({\alpha+\lambda} )&=&u'(e_1^*) \IEEEyessubnumber
+\\ \kappa_2({\alpha+\lambda} )&=&u'(e_2^*) \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+As $u(E)$ is strictly concave, we know that the value of $e_1$ in (29a) is greater than the value of $e_2$ in (29b). The optimal consumption path will then be as follows
+
+\end{enumerate}
+\newpage
+\thispagestyle{empty} % This command disables the header on the first page. 
+\begin{tabular}{p{17cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf Homework 1} \\
+ECON 330 (Theory of Income) \\ Fall 2019  \\ {\bf{Alvin Ulido Lumbanraja}}\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+\vspace*{0.3cm} % Now we want to add some vertical space in between the line and our title.
+% Up until this point you only have to make minor changes for every week (Number of the homework). Your write up essentially starts here.
+%	Question 3
+\item Social planner would like to maximize the following function
+\begin{IEEEeqnarray}{rCl}
+\max \sum_{i=1}^{n} \Big[-\int_{0}^{T}e^{-rt}h(e_i(t))dt+e^{-rT}\psi_i(x(T))
+\Big]
+\end{IEEEeqnarray}
+
+Subject to the following constraints:
+\begin{IEEEeqnarray}{rCl}
+\dot{x}(t)&=& \sum_{i=1}^{n}e_i(t)  \IEEEyessubnumber
+\\ e_i(t)&\geq&0 \IEEEyessubnumber
+\\ x(0) &=& x_0 \geq 0 \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+\begin{enumerate}
+	%% 			3(a)
+\item The control variables of this equation is the $e_i(t)$ (effort function) and the state variable of this equation is $x(T)$ (final quality of the park)
+\vspace*{0.3cm}
+
+	%% 			3(b)
+\item The Hamiltonian for this problem would therefore be:
+\begin{IEEEeqnarray}{rCl}
+\mathcal{H}(t,e_i,x,\lambda)&=&\sum_{i=1}^{n} -e^{-rt}h(e_i(t))+\lambda\sum_{i=1}^{n}e_i(t)
+\end{IEEEeqnarray}
+
+	%% 			3(c)
+\item The necessary condition for the maximum is given by the first-order conditions for the Hamiltonian
+\begin{IEEEeqnarray}{rCl}
+\frac{d\mathcal{H}}{de_i}&=&-e^{-rt}h'(e_i(t))+\lambda=0 \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{dx(T)}&=& 0=-\dot{\lambda} \IEEEyessubnumber
+\\ \frac{d\mathcal{H}}{d\lambda}&=& \sum_{i=1}^{n}e_i(t) = \dot{x} \IEEEyessubnumber
+\\ x(0)&=&x_0\geq0 \IEEEyessubnumber
+\\ \lambda(T)&=&e^{-rT}\psi'(x(T)) \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+To check on whether the constraint in (31b) is binding, we should evaluate whether the optimum condition where $e_i=0$. We know by (31b) that $\lambda(t)=\lambda(T)=\lambda_0$, and that $h'(0)=0$. We can set the (31a) by:
+\begin{IEEEeqnarray}{rCl}
+e^{-rT}h'(e_i(T))&=&e^{-rT}\psi'(x(T)) \IEEEnonumber
+\\h'(e_i(T))&=&\psi'(x(T)) \IEEEnonumber
+\\\psi'(x(T))&=&0
+\end{IEEEeqnarray}
+
+However, as  $\phi(x(T))$ is a strictly concave and increasing function and that $\phi(x(T))=0$ only when $x(T)=+\infty$, we know that the non-negativity constraint is non-binding
+\vspace*{0.3cm}
+
+	%% 			3(d)
+\item The terminal condition for $\lambda$ is defined by (31e), which was rewritten to
+\begin{IEEEeqnarray}{rCl}
+\lambda(T)&=& e^{-rT}\psi'(x(T))>0
+\end{IEEEeqnarray}
+
+\vspace*{0.3cm}
+
+	%% 			3(e)
+\item $\lambda(t)$ represents the "shadow price" of the park improvement effort. That is, the $\lambda(T)$ is the additional discounted disutility that is incurred if we are trying to increase the desired final quality of the park.
+
+\vspace*{0.3cm}
+
+	%% 			3(f)
+\item We know that the effort level can be represented by the restatement of equation (33)
+\begin{IEEEeqnarray}{rCl}
+h'(e_i(t))&=&e^{r(t-T)}\psi'(x(T))
+\end{IEEEeqnarray}
+
+We have established before that $\psi'(x(T)$ is constant (by the FOC properties of $\dot{\lambda}=0\Longrightarrow\lambda(T)=\lambda(t)$
+as (t-T) is decreasing as t approaches T, we know that $h'(e_i(t))$ is increasing as the value of time. Given that $h'(e_i(t))$ is strictly convex and strictly increasing, this ensures $(e_i(t)$ will increase time over time (people will work less now and work more in the future). 
+\newline\newline
+We also know that (34) is a constant that is not dependent across individual. To ensure that this is the case, assume that there exists a plan where agent 1 exert the effort of $e_1(t)=e^*+\alpha$ and agent 2 exert the effort of $e_2(t)=e^*-\alpha$. By rearranging the Hamiltonian, we then would like to show that
+\begin{IEEEeqnarray}{rCl}
+-h(e^*(t)+\alpha)-h(e^*(t)-\alpha)+\sum_{i=3}^{n} -e^{-rt}h(e^*(t))>\sum_{i=1}^{n} -e^{-rt}h(e^*(t))dt
+\end{IEEEeqnarray}
+
+However, since all agents have identical utility/disutility function and that $h(\ddot)$ is strictly convex and increasing, we know that $h(e^*(t)+\alpha)+h(e^*(t)-\alpha)>2h(e^*(t))$. We thus know that (35) is violated and there is no optimal plan in which effort level varies across individual
+
+
+\vspace*{0.3cm}
+
+	%% 			3(g)
+\item As we have established the necessary condition to hold, in order to show that a solution exists and it is unique, we need to we need to prove that the maximized Hamiltonian is concave in the $x^*(T)$ and satisfies the necessary condition of the maximum (satisfying the Arrow condition). The maximized Hamiltonian is as follows:
+\begin{IEEEeqnarray}{rCl}
+\mathcal{H}^0(t,x,\lambda)&=&\sum_{i=1}^{n} -e^{-rt}h(e_i^*)+\lambda\sum_{i=1}^{n}e_i^*
+\\ \frac{\partial \mathcal{H}}{\partial x^*(T)} &=& \sum_{i=1}^{n} -e^{-rt}h'(e_i^*(t))e_i'(x(T))+\lambda\sum_{i=1}^{n}e_i'(x(T))
+\end{IEEEeqnarray}
+
+We know that $x(T)$ is a linear function $e_i$ (the state is a simple summation of efforts across individual and time) and as such, the inverse is also linear ($e_i$ is linear function of $x(T)$). We also know that $h(e_i)$ is strictly convex, and thus the negative value of $h(e_i)$ is concave. Thus, the maximized Hamiltonian is concave in $x(T)$. Furthermore, as the first-order condition shows that interior solution exists, we can establish that a unique solution exists.
+
+\end{enumerate}
+
+\end{enumerate}
+\clearpage
+\end{document}
