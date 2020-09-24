@@ -4,23 +4,30 @@
 Public Github Repos for Makroekonomi 2
 
 By	: Alvin U. Lumbanraja
-Updated	: September 14, 2020
+Updated	: September 24, 2020
 
 *********************************************
 
 1. Schedules:
->> TA Session		: Every Thursday @ 5PM, starting Sept 17
->> TA Office Hour	: Every Monday @ 6PM, starting Sept 21
+>> TA Session		: Every Thursday @ 5PM, starting Sept 24
+>> TA Office Hour	: Every Monday @ 6PM, starting Sept 28
 
 
 2. Directories:
+
+>> 	Homework Questions
+	I post the homework for each week here
 
 >>	Sample Codes 
 	>> 	LaTeX 
 		Consists of two TeX files. One is in the Computational subfolder to showcase how to include pictures and other attachments. 
 
->> 	TA Sessions
+>> 	Slides
 	Consists of all the slides for TA sessions
+
+>> 	TA Session Recording
+	Recording of TA sessions
+
 
 
 3. Notes on LaTeX:
