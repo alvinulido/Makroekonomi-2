@@ -1,0 +1,270 @@
+\documentclass[letter,11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2. Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry} 
+
+% The following two packages - multirow and booktabs - are needed to create nice looking tables.
+\usepackage{IEEEtrantools}
+\usepackage{setspace}
+\usepackage{exercise}
+\usepackage{multicol}
+ \usepackage{nccmath}
+
+\setlength{\parindent}{0in}
+
+% Package to place figures where you want them.
+\usepackage{float}
+
+% The fancyhdr package let's us create nice headers.
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\let\otheriint\iint
+\let\iint\relax
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy} 
+\fancyhf{}
+\lhead{\footnotesize Macroeconomics 2: Solutions to Homework 1}
+\rhead{\footnotesize{\textit{Lumbanraja, Alvin Ulido}}} %<---- Fill in your lastnames.
+\cfoot{\footnotesize \thepage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4. Your document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty} % This command disables the header on the first page. 
+\begin{tabular}{p{17cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf Solutions to Homework 1} \\
+Macroeconomics 2 \\ Beta Yulianita Gitaharie/Eugenia Mardanugraha  \\ {\bf{TA: Alvin Ulido Lumbanraja}}\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+% Up until this point you only have to make minor changes for every week (Number of the homework). Your write up essentially starts here.
+
+\begin{enumerate}
+
+% 	Question 1
+	%% 			1(a)
+\item \textbf{(15 points)} Prove that matrix multiplication is not commutative! (Hint: use online resources on how to write a proof. This is a good exercise for elementary real analysis)
+
+\vspace{0.15cm} \underline{\textbf{Answer:}}
+There are several ways to answer this, but usually it involves proof by contradiction. For example:
+
+Commutative property requires that the following holds $\mathbf{AB} = \mathbf{BA}$ in all cases. Suppose that we have two square matrices as follows: 
+\begin{IEEEeqnarray}{rCl}
+\mathbf{A} = \begin{pmatrix}
+\alpha & \beta \\ \gamma & \delta
+\end{pmatrix} \hspace{0.5cm}
+\mathbf{B} = \begin{pmatrix}
+\zeta & \eta \\ \theta & \iota
+\end{pmatrix} \nonumber
+\end{IEEEeqnarray}
+Where $\alpha,\beta,\gamma,\delta,\zeta,\eta,\theta,\iota \in \mathbb{R}$, $\mathbf{A} \neq \mathbf{B}$, and both matrices are non-singular
+
+We know that $\mathbf{AB}=\begin{pmatrix}
+\alpha\zeta + \beta\delta & \alpha\eta + \beta\iota \\ 
+\gamma\zeta + \delta\theta & \gamma\eta + \delta\iota\end{pmatrix}$ and that $\mathbf{BA}=\begin{pmatrix}
+\alpha\zeta + \eta\gamma & \beta\zeta + \delta\eta \\ \alpha\theta+\gamma\iota & \beta\theta+\delta\iota
+\end{pmatrix}$
+
+Since we can find combination of values of $\alpha,\beta,\gamma,\delta,\zeta,\eta,\theta,\iota$ that violates $\mathbf{AB} = \mathbf{BA}$, we know that $\mathbf{AB} = \mathbf{BA}$ cannot hold for all $\alpha,\beta,\gamma,\delta,\zeta,\eta,\theta,\iota \in \mathbb{Z}$. We can therefore establish that matrix multiplication is not commutative (i.e. $\mathbf{AB} \neq \mathbf{BA}$)
+
+(\textit{Bonus: alternatively, you can point to the fact that matrix multiplication does not work for cases of $A_{(m \times n)} \times B_{(m \times n)}, m\neq n$. That is, commutative property can only work for square matrices, if at all})
+
+\item \textbf{(25 points)} Find the inverse of the following matrices. Provide explanation for your answer if necessary 
+\begin{multicols}{4}
+\begin{enumerate}
+
+\item $\begin{pmatrix}
+2 & 1 
+\\
+1 & 2 
+\\ 
+3 & 5
+\end{pmatrix}$ \\
+
+\item $\begin{pmatrix}
+1 & 0 & 0
+\\
+0 & 1 & 0
+\\ 
+0 & 0 & 1
+\end{pmatrix}$ \\
+
+\item $\begin{pmatrix}
+\alpha & \beta & \gamma
+\\
+1 & 0 & 1
+\\ 
+0 & 1 & \delta
+\end{pmatrix}$ \\
+
+\item $\begin{pmatrix}
+1 & 2 & 3
+\\
+1 & 0 & 1
+\\ 
+3 & 4 & 7
+\end{pmatrix}$
+\end{enumerate}
+\end{multicols} 
+
+\underline{\textbf{Answer:}}
+\begin{enumerate}
+\item This is a non-square matrix and by definition is not invertible. You do not need to comment further than this
+\item This is an identity matrix. The inverse of identity matrix is itself, such that $\mathbf{I}^{-1} = \mathbf{I}$
+\item (Some initial steps omitted). The solution for this is 
+\begin{IEEEeqnarray}{rCl}
+\frac{1}{\gamma-\alpha-\beta\delta} \begin{pmatrix}
+-1 & \gamma-\beta\delta & -\beta
+\\
+-\delta & \alpha\delta & \gamma-\alpha
+\\ 
+1 & -\alpha & -\beta
+\end{pmatrix}
+\end{IEEEeqnarray}
+
+Recall that a matrix is invertible only if it is square and non-singular. Setting $\gamma-\alpha-\beta\delta=0$ allows us to obtain singular matrix (i.e. $\det(c)=0$). Therefore, the matrix is not invertible for some $\alpha, \beta, \gamma, \delta \in \mathbb{Z}$.
+
+
+
+\item Matrix is singular ($\det(d)=0$) and therefore not invertible
+
+\end{enumerate}
+
+
+\item \textbf{(20 points)} Solve the following national income model, using either matrix inversion or Cramer's rule
+\begin{IEEEeqnarray}{rCl}
+    Y &=& C + I + G  \nonumber \\
+    C &=& \alpha + \beta(Y-T) \nonumber \\
+    T &=& \tau_y Y \nonumber
+\end{IEEEeqnarray}
+
+(\textit{Hint: the only variables that are assumed to be exogenous in this model are $I$ and $G$})
+
+\vspace{0.15cm} \underline{\textbf{Answer:}}
+Let us rearrange the equation first such that the exogenous terms are on the right hand side and the independent variables on the left hand side
+\begin{IEEEeqnarray}{rCl}
+Y - C  &=& (I + G) \nonumber \\
+ -\beta Y + C + \beta T &=& \alpha \nonumber \\
+ -\tau_y Y + T &=& 0  \nonumber
+\end{IEEEeqnarray}
+We then turn these system of equations into matrix form
+\begin{IEEEeqnarray}{rCl}
+\begin{pmatrix}
+1 & -1 & 0 \\ 
+-\beta & 1 & \beta \\
+-\tau_y & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+Y \\ C \\ T
+\end{pmatrix} = 
+\begin{pmatrix}
+(I+G) \\ \alpha \\ 0
+\end{pmatrix}
+\nonumber 
+\end{IEEEeqnarray}
+Then we invert the $A$ matrix to obtain the following (note that some steps are omitted for brevity):
+\begin{IEEEeqnarray}{rCl}
+\begin{pmatrix}
+Y \\ C \\ T
+\end{pmatrix} &=& 
+\begin{pmatrix}
+1 & -1 & 0 \\ 
+-\beta & 1 & \beta \\
+-\tau_y & 0 & 1 \\
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+(I+G) \\ \alpha \\ 0
+\end{pmatrix}
+\nonumber  \\
+&=&
+\frac{1}{1+\beta(\tau_y-1)} 
+\begin{pmatrix}
+1 & 1 & -\beta \\ 
+\beta(1-\tau_y) & 1 & -\beta \\
+\tau_y & \tau_y & 1-\beta \\
+\end{pmatrix}
+\begin{pmatrix}
+(I+G) \\ \alpha \\ 0
+\end{pmatrix}
+\nonumber \\
+&=&
+\frac{1}{1+\beta(\tau_y-1)} \begin{pmatrix}
+I+G+\alpha \\
+\beta(1-\tau_y)(I+G)+\alpha \\
+\tau_y(I+G+\alpha)
+\end{pmatrix} \nonumber
+\end{IEEEeqnarray}
+We can therefore restate $Y,C,T$ into:
+\begin{IEEEeqnarray}{rCl}
+Y &=& \frac{I+G+\alpha}{{1+\beta(\tau_y-1)} }  \nonumber \\
+C &=& \frac{\beta(1-\tau_y)(I+G)+\alpha}{{1+\beta(\tau_y-1)} }  \nonumber \\
+T &=& \frac{\tau_y(I+G+\alpha)}{{1+\beta(\tau_y-1)} }  \nonumber
+\end{IEEEeqnarray}
+
+
+\item \textbf{(20 points)} Assume the following production function in the economy:
+\begin{IEEEeqnarray}{rCl}
+y &=& Ak^{\alpha} n^{\beta}  \nonumber
+\end{IEEEeqnarray}
+Where $k$ represents capital, $n$ represents labor, and $\alpha, \beta \in (0,1), \alpha+\beta=1$. 
+\begin{enumerate}
+\item If we assume a perfectly competitive economy in its steady state, find the competitive level of wage and rent in this economy! (remember the principle that wage and rent should be equal to their respective marginal products)
+\item Explain what would happen to level of steady state wage and rent if we assume positive technological shock! (i.e. $\tilde{A} > A$)
+\end{enumerate}
+
+\vspace{0.15cm} \underline{\textbf{Answer:}}
+
+\begin{enumerate}
+\item In a competitive market, prices of factors of production will be equalized to their respective marginal product. Therefore
+\begin{IEEEeqnarray}{rCl}
+    w = MPL&=& \frac{\partial y}{\partial n} = (1-\alpha) Ak^\alpha n^{-\alpha}  \nonumber \\
+    r = MPK &=& \frac{\partial y}{\partial k} = \alpha Ak^{\alpha-1} n^{1-\alpha}  \nonumber
+\end{IEEEeqnarray}
+\item To see the effect of positive technological shock to wage and rent, we can take the partial derivative of wage and rent w.r.t. change in $A$
+\begin{IEEEeqnarray}{rCl}
+    \frac{\partial w}{\partial A} &=& \underbrace{(1-\alpha)}_{(+)} \underbrace{k^\alpha}_{(+)} \underbrace{n^{-\alpha}}_{(+)} > 0  \nonumber \\
+    \frac{\partial r}{\partial A}  &=& \underbrace{\alpha}_{(+)} \underbrace{k^{\alpha-1}}_{(+)} \underbrace{n^{1-\alpha}}_{(+)} > 0  \nonumber
+\end{IEEEeqnarray}
+Given that the technological shock mentioned is positive ($\tilde{A}>A$), we therefore know that positive technological shock will result in higher wages and rents (conceptually, this means the technological shock is both labor-augmenting and capital-augmenting)
+
+\end{enumerate}
+
+\item \textbf{(20 points)} You should be familiar with Fisher's quantity theory of money from monetary economics course
+\begin{IEEEeqnarray}{rCl}
+MV = PY  \nonumber
+\end{IEEEeqnarray}
+Using total differentiation, prove that the rate of growth in money supply is proportional to inflation rate if velocity of money is constant (that is $\frac{dV}{V}=0$) and economic growth is constant (that is $g=\frac{dY}{Y}\in \mathbb{R}$). You do not need to worry about transmission lag, dynamic inconsistencies, or rational expectation for this question
+\newline\newline
+(\textit{Hint: you need to transform the equation into natural log form first before applying the differentiation, given the very neat property of differentiation for log})
+
+\vspace{0.15cm} \underline{\textbf{Answer:}}
+\begin{IEEEeqnarray}{rCl}
+MV &=& PY  \nonumber \\
+\log M + \log V &=& \log P + \log Y  \nonumber \\
+d(MV) &=& d(PY) \nonumber \\
+\frac{\partial (\log M + \log V)}{\partial M} dM + \frac{\partial (\log M + \log V)}{\partial V} dV &=& \frac{\partial (\log P + \log Y)}{\partial P} dP + \frac{\partial (\log P + \log Y)}{\partial Y} dY \nonumber \\ \nonumber \\
+\frac{1}{M}dM + \frac{1}{V}dV &=&  \frac{1}{P}dP + \frac{1}{Y}dY \nonumber \\
+\frac{dM}{M} + \frac{dV}{V} &=& \frac{dP}{P} + \frac{dY}{Y} \nonumber
+\end{IEEEeqnarray}
+Given that $\frac{dV}{V}=0$ and $\frac{dY}{Y}=g\in \mathbb{R}$, we can rearrange the equation above into
+\begin{IEEEeqnarray}{rCl}
+\frac{dM}{M} &=& \frac{dP}{P} + g \nonumber \\
+\therefore \frac{dM}{M} &\propto& \frac{dP}{P} = \pi \nonumber
+\end{IEEEeqnarray}
+
+
+
+\end{enumerate}
+
+\clearpage
+\end{document}

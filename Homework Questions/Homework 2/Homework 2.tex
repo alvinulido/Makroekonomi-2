@@ -1,0 +1,111 @@
+\documentclass[letter,11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2. Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry} 
+
+% The following two packages - multirow and booktabs - are needed to create nice looking tables.
+\usepackage{IEEEtrantools}
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+
+% Package to place figures where you want them.
+\usepackage{float}
+
+% The fancyhdr package let's us create nice headers.
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[svgnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage[shortlabels]{enumitem}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\let\otheriint\iint
+\let\iint\relax
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy} 
+\fancyhf{}
+\lhead{\footnotesize Macroeconomics 2: Homework 2}
+\rhead{\footnotesize{\textit{Lumbanraja, Alvin Ulido}}} %<---- Fill in your lastnames.
+\cfoot{\footnotesize \thepage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4. Your document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\thispagestyle{empty} % This command disables the header on the first page. 
+\begin{tabular}{p{17cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf Homework 2} \\
+Macroeconomics 2 \\ Beta Yulianita Gitaharie/Eugenia Mardanugraha  \\ {\bf{TA: Alvin Ulido Lumbanraja}}\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+% Up until this point you only have to make minor changes for every week (Number of the homework). Your write up essentially starts here.
+
+\begin{center}
+\textbf{Due Date: October 8, 2020, 17.00 WIB \\ Late Penalty Applies}
+\end{center}
+
+\begin{enumerate}
+
+% 	Question 1
+	%% 			1(a)
+\item \textbf{(50 points) Theory of the Firm}
+
+Consider an infinitely-lived representative firm that maximizes the present value of their intertemporal profit:
+\begin{IEEEeqnarray}{rCl}
+\max_{N_t, K_t \in \mathbb{R}^{+}} &\sum_{t=0}^{\infty}& \beta^t \left[PF(N_t,K_t)-WN_t-P_I I_t - bP_I I_t^2  \right] \\
+&\text{s.t.}& \hspace{0.5em} I_t = K_{t+1}-K_t+\delta K_t 
+\end{IEEEeqnarray}
+Where $\beta = \left(\frac{1}{1+r} \right)$ is the simplified notation of the discounting term.
+
+\textbf{Questions:}
+\begin{enumerate}
+\item Characterize the steady state level of investment from equation (1) and (2). DO NOT assume any functional form of $F(\cdot)$ just yet
+\item If we assume perfect substitution between labor and capital, and that the production function follows $Y_t=A(K_t+N_t)$, does the Inada condition hold? Explain, mathematically and economically, why we want Inada condition to hold!
+\item Explan what would happen to steady state level of investment if adjustment cost parameter decline? (i.e. $\hat{b}<b$)
+\item What would happen to (i) the investment decision rule and (ii) steady state level of investment if the central bank announces \textbf{nominal} interest rate cut? Explain your answer in detail!
+\item Intuitively, why is price level not relevant in determining the steady-state level of investment?
+\end{enumerate}
+
+\vspace{1em}
+\item \textbf{(50 points) Theory of the Household}
+
+Consider an infinitely-lived representative household that maximizes the present value of their intertemporal utility subject to intertemporal constraint:
+\begin{IEEEeqnarray}{rCl}
+\max_{C_t \in \mathbb{R}^{+}} \sum_{t=0}^{\infty} \beta^t U(C_t)  \hspace{0.5em}\text{s.t.} \nonumber \\
+C_t + (A_{t+1}-A_t) = rA_t + w_t \nonumber
+\end{IEEEeqnarray}
+Where $\beta = \left(\frac{1}{1+\rho} \right)$ is the simplified notation of the discounting term.
+
+\textbf{Questions:}
+\begin{enumerate}
+\item Characterize the optimal decision rule for $C_t$, assuming $U(\cdot)=\ln(\cdot)$
+\item What would happen to the optimal decision rule if we increase the initial wealth from $A_0$ to $\hat{A}_0$, where $\hat{A}_0>A_0$? (Hint: this is a trick question. As a guide, consider what would happen if the parameters change. What conditions should hold for your answer to be true?)
+\item Logically, if $r > \rho$, that is the interest rate is higher than the household discount rate, a household should be incentivized to consume at a later date. Why, then, does the consumer still choose to consume a positive value of $c_t$ at any point in time? What prevents them from just choosing to consume $c_t=0$ and consume the bulk of their wealth at a later date, since their money will grow infinitely large at a later date?
+\item Illustrate graphically (that is, draw a graph) that shows the optimal path for $C_t$ from $t=0$ to $t=100$. Assume the following ($w_t = \bar{w}$ indicates constant wage level over time)
+\begin{table}[htbp]
+\centering
+\begin{tabular}{p{3cm}  P{0.8cm} P{0.8cm} P{0.8cm} P{0.8cm} P{0.8cm}}
+\hline\hline
+\textbf{Parameter} 	& $\rho$ 	& $A_0$	& $r$ 	& $\bar{w}$ 	& $c_0$ \\  
+\hline
+\textbf{Values} 		&  0.04 	& 10		& 0.02	& 1		&1.5 \\ 
+\hline\hline
+\end{tabular}
+\end{table}
+
+Furthermore, assume without proof that the initial consumption ($c_0=1.5$) is on the optimal trajectory of consumption, such that the sequence of $\{c_t\}_{t=0}^{\infty}$ is the optimal consumption path. It is highly recommended that you graph this path in Excel, Stata, R, Python, or any other software that can do the calculation for you. You do not need to submit any code you use to generate the graph
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
