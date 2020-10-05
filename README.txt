@@ -12,11 +12,19 @@ Updated	: September 24, 2020
 >> TA Session		: Every Thursday @ 5PM, starting Sept 24
 >> TA Office Hour	: Every Monday @ 6PM, starting Sept 28
 
+2. Link for TA Session & TA Office Hours
+I use my personal room for both TA Session and TA Office Hour going forward.
+Link here: https://uchicago.zoom.us/my/alumbanraja?pwd=bUVCS09lcHNEeWlWZDhpOWNIalM2Zz09
+Password available in LINE group chat
 
-2. Directories:
+
+3. Directories:
 
 >> 	Homework Questions
-	I post the homework for each week here
+	I post the homework for each week here just before the TA session
+
+>> 	Homework Solutions
+	I post the solution to previous homework the same time I post the new homework
 
 >>	Sample Codes 
 	>> 	LaTeX 
@@ -30,7 +38,7 @@ Updated	: September 24, 2020
 
 
 
-3. Notes on LaTeX:
+4. Notes on LaTeX:
 
 I highly recommend using LaTeX for typing up highly mathematical documents/works, but I realize that LaTeX can be a bit daunting at first for those who are uninitiated. If you’re new to LaTeX, use Overleaf (it’s much easier and doesn’t require you to set-up your own TeX client (like TeXShop etc.) on your desktop, which can be really cumbersome
 
