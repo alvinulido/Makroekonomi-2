@@ -1,0 +1,77 @@
+\documentclass[letter,11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2. Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry} 
+
+% The following two packages - multirow and booktabs - are needed to create nice looking tables.
+\usepackage{IEEEtrantools}
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+
+% Package to place figures where you want them.
+\usepackage{float}
+
+% The fancyhdr package let's us create nice headers.
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[svgnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage[shortlabels]{enumitem}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\let\otheriint\iint
+\let\iint\relax
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy} 
+\fancyhf{}
+\lhead{\footnotesize Macroeconomics 2: Homework 3}
+\rhead{\footnotesize{\textit{Lumbanraja, Alvin Ulido}}} %<---- Fill in your lastnames.
+\cfoot{\footnotesize \thepage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4. Your document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\thispagestyle{empty} % This command disables the header on the first page. 
+\begin{tabular}{p{17cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf Homework 3} \\
+Macroeconomics 2 \\ Beta Yulianita Gitaharie/Eugenia Mardanugraha  \\ {\bf{TA: Alvin Ulido Lumbanraja}}\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+% Up until this point you only have to make minor changes for every week (Number of the homework). Your write up essentially starts here.
+
+\begin{center}
+\textbf{Due Date: October 22, 2020, 17.00 WIB \\ Late Penalty Applies}
+\end{center}
+
+
+Assume the following system of equations for our simple closed economy:
+\begin{IEEEeqnarray}{rCl}
+Y &=& C(Y) + I(Y,r) + G\\
+L(Y,i) &=& \frac{M}{P} \\
+H\left[\frac{(Y-\bar{Y})}{\bar{Y}}\right] &=& \frac{\dot{P}}{P} -\pi
+\end{IEEEeqnarray}
+
+\textbf{Questions:}
+\begin{enumerate}
+
+% 	Question 1
+	%% 			1(a
+\item Characterize the slope of \textit{IS} and \textit{LM}
+\item What restrictions should we put in place in order for the slope of  \textit{IS} to be negative?
+\item Explain mathematically why the convergence requirement dictates that the slope of \textit{LM} should be larger than the slope of \textit{IS}. (Hint: use the analysis of $\frac{d\dot{P}}{dP}$ from page 39-40)!
+\item Explain intuitively why the convergence requirement dictates that the slope of \textit{LM} should be larger than the slope of \textit{IS}!
+\item Assuming static expectation, derive the quantity theory of money from the  \textit{IS}/\textit{LM} relationship!
+\end{enumerate}
+
+\end{document}
